@@ -194,14 +194,16 @@ scraper-project/
 ├── douyin_spider.py        # 爬虫脚本（抓取视频信息）
 ├── douyin_download.py      # 下载脚本（下载 MP4）
 ├── main.py                 # 简版示例入口（供参考）
-├── _check_csv.py           # CSV 检查工具
-├── _retry.py               # 重试工具
+├── _check_csv.py           # 辅助：检查 CSV 文件编码与完整性
+├── _retry.py               # 辅助：重试下载失败的任务
 ├── requirements.txt        # Python 依赖
 ├── README.md               # 本说明文件
 ├── user_data/              # 浏览器登录态（自动生成，不要删除）
 ├── videos/                 # 下载的视频（自动生成）
 └── venv/                   # Python 虚拟环境（本地生成，不提交 Git）
 ```
+
+> `_check_csv.py` 和 `_retry.py` 是辅助工具，非核心流程，按需使用即可。
 
 ---
 

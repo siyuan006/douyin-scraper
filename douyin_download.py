@@ -3,20 +3,11 @@
 从 CSV 读取视频列表，选择性下载（复用登录态）
 
 用法:
-    # 查看列表
-    .\venv\Scripts\python.exe douyin_download.py douyin_playable.csv --list
-
-    # 下载指定序号
-    .\venv\Scripts\python.exe douyin_download.py douyin_playable.csv --ids 1,3,5-10
-
-    # 交互选择
-    .\venv\Scripts\python.exe douyin_download.py douyin_playable.csv --pick
-
-    # ★ 手动选画质模式：浏览器可见，你亲手点 HD 后再下载
-    .\venv\Scripts\python.exe douyin_download.py douyin_playable.csv --ids 1-5 --manual-hd
-
-    # 全部下载
-    .\venv\Scripts\python.exe douyin_download.py douyin_playable.csv
+    python douyin_download.py douyin_playable.csv --list
+    python douyin_download.py douyin_playable.csv --ids 1,3,5-10
+    python douyin_download.py douyin_playable.csv --pick
+    python douyin_download.py douyin_playable.csv --ids 1-5 --manual-hd
+    python douyin_download.py douyin_playable.csv
 """
 
 import sys
@@ -117,7 +108,7 @@ def _capture_video_url(page) -> list[str]:
         urls.append(src)
 
     # 方法2: script 中的 play_addr 数据
-    src = page.evaluate("""() => {
+    src = page.evaluate(r"""() => {
         const scripts = document.querySelectorAll('script');
         for (const sc of scripts) {
             const t = sc.textContent || '';
@@ -135,7 +126,7 @@ def _capture_video_url(page) -> list[str]:
         urls.append(src)
 
     # 方法3: 页面中所有 video/mp4 链接
-    src = page.evaluate("""() => {
+    src = page.evaluate(r"""() => {
         const text = document.body.innerText + Array.from(document.querySelectorAll('script')).map(s=>s.textContent).join(' ');
         const m = text.match(/https?:[^"'\\s]+\.(mp4|m3u8)[^"'\\s]*/);
         return m ? m[0] : '';
