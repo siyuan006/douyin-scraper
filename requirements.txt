@@ -1,0 +1,2 @@
+playwright>=1.52.0
+beautifulsoup4>=4.13.0

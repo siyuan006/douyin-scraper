@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+venv/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Playwright browser cache (optional)
+# ms-playwright/
+
+# Project data
+videos/
+user_data/
+failed_videos.txt
+*.csv
+
+# Binary tools
+ffmpeg/
+ffmpeg.zip
